@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="FlexTest">
+<meta name="theme-color" content="#0b0f14">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="icon" type="image/png" href="icon-192.png">
+<link rel="stylesheet" href="styles.css">
+<title>Flex PWA Test</title>
+</head>
+<body>
+<h1>Flex PWA test harness</h1>
+<div class="sub" id="ver">loading...</div>
+
+<section>
+  <h2>1. Environment</h2>
+  <div class="row"><button id="b-env">Re-run</button></div>
+  <div class="status" id="s-env"></div>
+</section>
+
+<section>
+  <h2>2. Launch history (eviction)</h2>
+  <div class="status" id="s-launch"></div>
+</section>
+
+<section>
+  <h2>3. Storage</h2>
+  <div class="row"><button id="b-persist">persist() + estimate()</button></div>
+  <div class="status" id="s-storage"></div>
+</section>
+
+<section>
+  <h2>4. Camera</h2>
+  <div class="vwrap"><video id="preview" playsinline muted autoplay></video><canvas id="overlay"></canvas></div>
+  <div class="row">
+    <button id="b-cam">Start camera</button>
+    <button id="b-flip">Facing: rear</button>
+    <button id="b-camstop" class="danger">Stop</button>
+  </div>
+  <div class="status" id="s-camera"></div>
+</section>
+
+<section>
+  <h2>5. Recording</h2>
+  <div class="row"><button id="b-fmt">Check formats</button></div>
+  <div class="row">
+    <button id="b-rec10">Rec 10 s</button>
+    <button id="b-rec60">Rec 60 s</button>
+    <button id="b-rec300">Rec 5 min</button>
+    <button id="b-recstop" class="danger">Stop</button>
+  </div>
+  <div class="status" id="s-rec"></div>
+</section>
+
+<section>
+  <h2>6. Saved clips (IDB + OPFS)</h2>
+  <div class="row"><button id="b-verify">Re-verify all</button></div>
+  <div class="status" id="s-clips"></div>
+  <div id="cliplist"></div>
+  <video id="playback" controls playsinline></video>
+</section>
+
+<section>
+  <h2>7. Export</h2>
+  <div class="row"><button id="b-dl">Download latest clip</button><button id="b-share">Share latest clip</button></div>
+  <div class="status" id="s-export"></div>
+</section>
+
+<section>
+  <h2>8. Wake lock</h2>
+  <div class="row"><button id="b-wake">Request wake lock</button></div>
+  <div class="status" id="s-wake"></div>
+</section>
+
+<section>
+  <h2>9. Motion sensor</h2>
+  <div class="row"><button id="b-motion">Enable motion</button></div>
+  <div class="big" id="motion-big">beta -- / gamma --</div>
+  <div class="status" id="s-motion"></div>
+</section>
+
+<section>
+  <h2>10. Pose (optional, needs network)</h2>
+  <div class="sub">Uses the camera preview in section 4. Start the camera first.</div>
+  <div class="row">
+    <button id="b-pose">Load + run pose</button>
+    <button id="b-delegate">Delegate: GPU</button>
+    <button id="b-posestop" class="danger">Stop</button>
+  </div>
+  <div class="status" id="s-pose"></div>
+</section>
+
+<section>
+  <h2>11. Report</h2>
+  <div class="row"><button id="b-report">Copy report</button></div>
+  <div class="status" id="s-report"></div>
+  <textarea id="report" readonly placeholder="Report JSON appears here"></textarea>
+</section>
+
+<script src="app.js"></script>
+</body>
+</html>
